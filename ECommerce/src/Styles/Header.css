@@ -1,5 +1,5 @@
 header {
-    background-color: #4478af; /* Blue theme color */
+    background-color: #4478af;
     color: #ffffff;
     padding: 10px 20px;
     display: flex;
@@ -36,7 +36,7 @@ header {
   }
   
   head {
-    background-color: #4478af; /* Blue theme color */
+    background-color: #4478af; 
     max-width: 100%;
   }
 
