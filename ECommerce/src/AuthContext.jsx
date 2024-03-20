@@ -1,6 +1,8 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { authenticateUser } from './API';
 
+
+// All User Auth Backend logis for logged and non-logged users ---------------------------------------//
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {

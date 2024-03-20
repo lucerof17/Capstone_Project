@@ -3,23 +3,28 @@ import { useCart } from '../CartContext';
 import { useAuth } from '../AuthContext';
 import '../Styles/Checkout.css';
 
-const Checkout = () => {
+// Checkout Functionailty ----------------------------------------------------------------------------------------------------------------//
+  const Checkout = () => {
   const { cartItems } = useCart();
   const { user } = useAuth();
 
+// Quanity Function
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   const totalPrice = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2);
 
+// Place order logic alert
   const handleSubmit = (event) => {
     event.preventDefault();
     alert('Order placed successfully!');
-    // Handle order submission logic here
   };
 
+// alert if not logged in
   if (!user) {
     return <div>Please log in to proceed with checkout.</div>;
   }
 
+
+// React component to display Checkout items and summary  ---------------------------------------------------------------------------------//
   return (
     <div>
       <h2>Checkout</h2>

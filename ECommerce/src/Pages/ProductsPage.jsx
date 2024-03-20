@@ -5,21 +5,25 @@ import { useCart } from '../CartContext';
 import { useAuth } from '../AuthContext';
 import '../Styles/ProductPage.css';
 
-
-const ProductPage = () => {
+// Individual Product Page with add to cart btn ---------------------------------------------------------------------------------//
+  const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
+
+// API Ftech product
   useEffect(() => {
     fetchProductDetails(id)
       .then((response) => setProduct(response.data))
       .catch((error) => console.error(error));
   }, [id]);
 
+// Add cart and auth user logged in logic
   const { addToCart } = useCart();
   const { user } = useAuth();
 
+// Cart btn and alert if not logged user
   const handleAddToCart = () => {
     if (!user) {
       alert('You must be logged in to add items to the cart!');
@@ -33,6 +37,8 @@ const ProductPage = () => {
     return <div>Loading...</div>;
   }
 
+
+  // // React component to display a single product card quantity and cart btn ---------------------------------------------------------------------------------//
   return (
     <div>
       <h2>{product.title}</h2>
@@ -54,46 +60,3 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
-
-
-/*
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchProductDetails } from '../API';
-import { useCart } from '../CartContext';
-import { useAuth } from '../AuthContext';
-
-const ProductPage = () => {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
-
-  useEffect(() => {
-    fetchProductDetails(id)
-      .then((response) => setProduct(response.data))
-      .catch((error) => console.error(error));
-  }, [id]);
-
-  const { addToCart } = useCart();
-
-  const handleAddToCart = () => {
-    addToCart(product);
-    alert('Product added to cart!');
-  };
-
-  if (!product) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <div>
-      <h2>{product.title}</h2>
-      <img src={product.image} alt={product.title} />
-      <p>{product.description}</p>
-      <p>${product.price}</p>
-      <button onClick={handleAddToCart}>Add to Cart</button>
-    </div>
-  );
-};
-
-export default ProductPage;
-*/

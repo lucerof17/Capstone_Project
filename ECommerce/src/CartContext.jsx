@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+
+
+// All Cart Backend Logic for adding, removing and editing quantity of products ---------------------------------------//
 const CartContext = createContext(null);
 
 export const CartProvider = ({ children }) => {

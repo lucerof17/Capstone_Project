@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useAuth } from '../AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+
+// Login User logic --------------------------------------------------------------------------------------------
+  const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
@@ -18,6 +20,8 @@ const Login = () => {
     }
   };
 
+
+// React component to display log-in form ---------------------------------------------------------------------------------//
   return (
     <div>
       <h2>Login</h2>
